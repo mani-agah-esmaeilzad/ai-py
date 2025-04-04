@@ -151,7 +151,6 @@ def handle_query():
     threshold = 0.3
     if proba < threshold:
         return jsonify({"answer": "متاسفانه اطلاعاتی در مورد سوال شما در داده‌های آموزش دیده یافت نشد.", "score": float(proba), "status": "irrelevant"}), 200
-    
     retrieved_answer = query_with_gemini(fix_encoding(question), trained_documents)
     return jsonify({"answer": retrieved_answer, "score": float(proba), "status": "relevant"}), 200
 
